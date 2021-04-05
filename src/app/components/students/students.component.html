@@ -1,0 +1,21 @@
+<div class="container">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let head of Info[0] |keys ">{{head}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of Info">
+                <td *ngFor="let list of item | keys">{{item[list]}}</td>
+                <button class=" btn btn-danger" (click)="DeleteInfo(item.id)">Delete</button>
+                <button (click)="update(item)">Update</button>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<div class="container">
+    <button type="button" (click)="Add()">Add Student</button>
+</div>
