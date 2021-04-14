@@ -7,17 +7,22 @@ import {GenerateInfoService} from './services/generate-info.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent{
+  flag:Boolean=false
   students:any[];
+
   constructor(private Generate:GenerateInfoService){
+  
+  
   
  
   }
 
   ngOnInit() {
-    this.Generate.getInfo().subscribe((data : any[])=>{
-        console.log(data);
-        this.students = data;
-    })
+   
+  }
+  openNav()
+  {
+    this.flag=true;
   }
    
 }

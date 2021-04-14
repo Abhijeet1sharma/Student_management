@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  flag:boolean=false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openNav() {
+    this.flag = true;
+  }
+  closeNav() {
+    this.flag = false;
   }
 
 }

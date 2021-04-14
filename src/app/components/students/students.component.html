@@ -1,21 +1,140 @@
-<div class="container">
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th *ngFor="let head of Info[0] |keys ">{{head}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of Info">
-                <td *ngFor="let list of item | keys">{{item[list]}}</td>
-                <button class=" btn btn-danger" (click)="DeleteInfo(item.id)">Delete</button>
-                <button (click)="update(item)">Update</button>
-            </tr>
-        </tbody>
-    </table>
+        <table class=" table table-striped ">
+            <thead>
+                <tr>
+                    <th *ngFor="let head of Info[0] |keys ">{{head}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of Info ">
+                    <td *ngFor="let list of item | keys ">{{item[list]}}</td>
+                    <button class=" btn btn-danger " (click)="DeleteInfo(item.id) "><i class="fa fa-trash " aria-hidden="true "></i></button>
+                    <button class="btn btn-primary " style="margin-left: 5px; font-size:auto; " (click)="update(context,item)"><i class="fa fa-pencil " aria-hidden="true "></i></button>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="col-2 "></div>
 
 </div>
-<div class="container">
-    <button type="button" (click)="Add()">Add Student</button>
+<div class="container ">
+    <button type="button " (click)="open(content)">Add Student</button>
 </div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add Student</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="myForm" (ngSubmit)=" submitForm()">
+            <div class="modal-boy">
+                <div class="container">
+                    <div class="form-group">
+                        <label for="id">Id</label>
+                        <input type="number" class="form-control" formControlName="id" />
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" formControlName="username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">email</label>
+                        <input type="email" class="form-control" formControlName="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">phone</label>
+                        <input type="text" class="form-control" formControlName="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input type="text" class="form-control" formControlName="add">
+                    </div>
+                    <div class="form-group">
+                        <label for="Academics">Academics</label>
+                        <input type="text" class="form-control" formControlName="acad">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" [disabled]="!myForm.valid" (click)="modal.close()">
+                Submit Form
+              </button>
+            </div>
+        </form>
+
+
+
+
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    </div>
+
+</ng-template>
+
+
+<ng-template #context let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Update Student</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="editForm" novalidate>
+            <div class="modal-boy">
+                <div class="container">
+                    <div class="form-group">
+                        <label for="id">Id</label>
+                        <input type="number" class="form-control" formControlName="id" [(ngModel)]="studentobj.id" />
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" formControlName="username" [(ngModel)]="studentobj.name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">email</label>
+                        <input type="email" class="form-control" formControlName="email" [(ngModel)]="studentobj.email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">phone</label>
+                        <input type="text" class="form-control" formControlName="phone" [(ngModel)]="studentobj.phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input type="text" class="form-control" formControlName="add">
+                    </div>
+                    <div class="form-group">
+                        <label for="Academics">Academics</label>
+                        <input type="text" class="form-control" formControlName="acad">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" [disabled]="!myForm.valid" (click)="modal.close()">
+                Submit Form
+              </button>
+            </div>
+        </form>
+
+
+
+
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    </div>
+
+</ng-template>
