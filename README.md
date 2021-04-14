@@ -25,3 +25,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Project includes displaying data of students in a table,at the end of  column,there are two buttons,one for update and one for delete.At the end of table ,there is a button to add student,at the header,search bar for searching student.
